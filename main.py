@@ -8,7 +8,7 @@ from helpers import LOCAL_COUNCILS_CODES, BASE_URL, csv_council_results, council
 
 contender_results_list = []
 election_results_list = []
-committee_result_list=[]
+committee_result_list = []
 for code in LOCAL_COUNCILS_CODES:
     url = urljoin(BASE_URL, str(code))
     print(url)
@@ -29,7 +29,7 @@ for code in LOCAL_COUNCILS_CODES:
     for settlement in settlements:
         settlement_name = settlement["Name"]
         factions_results = settlement['FactionResults']
-        committee_results =settlement['CommitteeResults']
+        committee_results = settlement['CommitteeResults']
         for factions_result in factions_results:
             letter = factions_result["Letter"]
             name = factions_result["Name"]
@@ -70,4 +70,3 @@ with open(csv_committee_result, 'w', newline='') as csv_file:
     csv_writer = csv.DictWriter(csv_file, fieldnames=committee_result)
     csv_writer.writeheader()
     csv_writer.writerows(committee_result_list)
-
